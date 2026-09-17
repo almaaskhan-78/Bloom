@@ -48,3 +48,9 @@ The project also gives me a space to learn by building. Every feature gives me a
 I'm continuing to add features, improve the interface, and shape it into a productivity app that actually fits the way I work and learn.
 
 > **Bloom is my little digital space for making progress, one step at a time. 🌸**
+
+
+
+
+<img width="1345" height="780" alt="Screenshot 2026-09-17 190807" src="https://github.com/user-attachments/assets/7b23b961-77ca-462f-93de-db3787d18611" />
+
