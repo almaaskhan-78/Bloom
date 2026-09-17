@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projects — Bloom</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="bloom-app">
+
+<div class="app">
+
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <span class="brand-flower">🌸</span>
+
+            <span class="brand-name">
+                Bloom
+            </span>
+
+        </div>
+
+       <nav class="sidebar-nav">
+
+    <a href="index.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Home</span>
+    </a>
+
+    <a href="tasks.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Tasks</span>
+    </a>
+
+    <a href="skills.html" class="nav-item">
+        <span class="nav-icon">✿</span>
+        <span>Skills</span>
+    </a>
+
+    <a href="projects.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Projects</span>
+    </a>
+
+    <a href="certificates.html" class="nav-item">
+        <span class="nav-icon">✧</span>
+        <span>Certificates</span>
+    </a>
+
+    <a href="universities.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Universities</span>
+    </a>
+
+    <a href="documents.html" class="nav-item">
+        <span class="nav-icon">▱</span>
+        <span>Documents</span>
+    </a>
+
+    <a href="notes.html" class="nav-item">
+        <span class="nav-icon">✎</span>
+        <span>Notes</span>
+    </a>
+
+    <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+    </a>
+
+</nav>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+
+        <!-- HEADER -->
+
+        <header class="page-header">
+
+            <div>
+
+                <p class="page-eyebrow">
+                    things I've created ♡
+                </p>
+
+                <h1>
+                    My Projects
+                </h1>
+
+                <p class="page-subtitle">
+                    Ideas, experiments, case studies and little creations.
+                </p>
+
+            </div>
+
+
+            <button
+                class="add-task-button"
+                id="openProjectModal"
+            >
+                + Add Project
+            </button>
+
+        </header>
+
+
+
+        <!-- ================= PROJECTS ================= -->
+
+        <section class="projects-page-grid">
+
+            <div
+                id="projectsList"
+                class="projects-page-list"
+            >
+
+                <!-- Projects will appear here -->
+
+            </div>
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                id="emptyProjects"
+                class="projects-empty-state"
+            >
+
+                <div class="empty-project-flower">
+                    ♡
+                </div>
+
+                <h2>
+                    Your project shelf is empty
+                </h2>
+
+                <p>
+                    Add something you've created,<br>
+                    or start a new little idea.
+                </p>
+
+                <button
+                    class="primary-button"
+                    id="emptyAddProject"
+                >
+                    + Add your first project
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- ================= ADD PROJECT MODAL ================= -->
+
+<div
+    class="task-modal"
+    id="projectModal"
+>
+
+    <div class="task-modal-box project-modal-box">
+
+        <button
+            class="close-modal"
+            id="closeProjectModal"
+        >
+            ×
+        </button>
+
+
+        <p class="page-eyebrow">
+            a new little creation
+        </p>
+
+        <h2>
+            Add a Project
+        </h2>
+
+
+        <form id="projectForm">
+
+
+            <!-- PROJECT NAME -->
+
+            <label for="projectName">
+                Project name
+            </label>
+
+            <input
+                type="text"
+                id="projectName"
+                placeholder="e.g. project name"
+                required
+            >
+
+
+
+            <!-- PROJECT TYPE -->
+
+            <label for="projectType">
+                Project type
+            </label>
+
+            <select
+                id="projectType"
+                required
+            >
+
+                <option value="">
+                    Choose a type
+                </option>
+
+                <option value="Web App">
+                    Web App
+                </option>
+
+                <option value="Case Study">
+                    Case Study
+                </option>
+
+                <option value="Creative">
+                    Creative
+                </option>
+
+                <option value="Portfolio">
+                    Portfolio
+                </option>
+
+                <option value="College">
+                    College
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+
+
+            <!-- STATUS -->
+
+            <label for="projectStatus">
+                Status
+            </label>
+
+            <select
+                id="projectStatus"
+                required
+            >
+
+                <option value="Idea">
+                    Idea
+                </option>
+
+                <option value="In Progress">
+                    In Progress
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+            </select>
+
+
+
+            <!-- PROGRESS -->
+
+            <label for="projectProgress">
+                Current progress
+            </label>
+
+            <div class="progress-input-row">
+
+                <input
+                    type="range"
+                    id="projectProgress"
+                    min="0"
+                    max="100"
+                    value="0"
+                >
+
+                <span id="projectProgressValue">
+                    0%
+                </span>
+
+            </div>
+
+
+
+            <!-- DESCRIPTION -->
+
+            <label for="projectDescription">
+                Short description
+                <span class="optional">
+                    optional
+                </span>
+            </label>
+
+            <textarea
+                id="projectDescription"
+                rows="3"
+                placeholder="What is this project about?"
+            ></textarea>
+
+
+
+            <!-- LINK -->
+
+            <label for="projectLink">
+                Project link
+                <span class="optional">
+                    optional
+                </span>
+            </label>
+
+            <input
+                type="text"
+                id="projectLink"
+                placeholder="e.g. your Netlify / GitHub link"
+            >
+
+
+
+            <button
+                type="submit"
+                class="save-task-button"
+            >
+                Save Project ♡
+            </button>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

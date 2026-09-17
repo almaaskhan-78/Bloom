@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Bloom — Settings</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600&family=Lato:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="app-shell">
+
+
+ 
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <span class="brand-flower">🌸</span>
+
+            <span class="brand-name">
+                Bloom
+            </span>
+
+        </div>
+
+       <nav class="sidebar-nav">
+
+    <a href="index.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Home</span>
+    </a>
+
+    <a href="tasks.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Tasks</span>
+    </a>
+
+    <a href="skills.html" class="nav-item">
+        <span class="nav-icon">✿</span>
+        <span>Skills</span>
+    </a>
+
+    <a href="projects.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Projects</span>
+    </a>
+
+    <a href="certificates.html" class="nav-item">
+        <span class="nav-icon">✧</span>
+        <span>Certificates</span>
+    </a>
+
+    <a href="universities.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Universities</span>
+    </a>
+
+    <a href="documents.html" class="nav-item">
+        <span class="nav-icon">▱</span>
+        <span>Documents</span>
+    </a>
+
+    <a href="notes.html" class="nav-item">
+        <span class="nav-icon">✎</span>
+        <span>Notes</span>
+    </a>
+
+    <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+    </a>
+
+</nav>
+
+    </aside>
+
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <header class="page-header">
+
+            <div>
+
+                <p class="page-eyebrow">
+                    your little space ♡
+                </p>
+
+                <h1 class="page-title">
+                    Settings
+                </h1>
+
+                <p class="page-subtitle">
+                    Make Bloom feel a little more like yours.
+                </p>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- SETTINGS -->
+
+        <section class="settings-page">
+
+
+            <!-- YOUR BLOOM -->
+
+            <div class="settings-card">
+
+                <div class="settings-card-heading">
+
+                    <div class="settings-icon">
+                        🌷
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Your Bloom
+                        </h2>
+
+                        <p>
+                            Tell Bloom what you'd like to be called.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-form">
+
+                    <label for="userName">
+                        Your name
+                    </label>
+
+                    <div class="name-input-row">
+
+                        <input
+                            type="text"
+                            id="userName"
+                            placeholder="Enter your name"
+                            maxlength="40"
+                        >
+
+                        <button
+                            id="saveNameButton"
+                            class="primary-button"
+                            type="button"
+                        >
+                            Save ♡
+                        </button>
+
+                    </div>
+
+
+                    <p
+                        class="settings-message"
+                        id="nameMessage"
+                    ></p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ABOUT BLOOM -->
+
+            <div class="settings-card">
+
+                <div class="settings-card-heading">
+
+                    <div class="settings-icon">
+                        🌸
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            About Bloom
+                        </h2>
+
+                        <p>
+                            A little space for your growth.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="about-content">
+
+                    <p>
+
+                        Bloom is your personal space to keep track
+                        of the things you're learning, creating and
+                        working towards.
+
+                    </p>
+
+                    <p>
+
+                        From little tasks to big dreams,
+                        everything has a place here. ♡
+
+                    </p>
+
+
+                    <div class="version">
+
+                        Bloom
+
+                        <span>
+                            Version 1.0
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DATA -->
+
+            <div class="settings-card danger-card">
+
+                <div class="settings-card-heading">
+
+                    <div class="settings-icon">
+                        🧺
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Your Data
+                        </h2>
+
+                        <p>
+                            Manage the information stored in Bloom.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="data-content">
+
+                    <div>
+
+                        <h3>
+                            Clear all Bloom data
+                        </h3>
+
+                        <p>
+
+                            This will remove your tasks, skills,
+                            projects, certificates, universities,
+                            documents and notes.
+
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="clearDataButton"
+                        class="clear-data-button"
+                        type="button"
+                    >
+                        Clear all data
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<style>
+
+
+/* =========================================
+   SETTINGS PAGE
+========================================= */
+
+.settings-page {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    margin-top: 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+
+}
+
+
+/* =========================================
+   SETTINGS CARD
+========================================= */
+
+.settings-card {
+
+    background: #fffaf3;
+
+    border: 1px solid
+        rgba(
+            111,
+            77,
+            67,
+            0.14
+        );
+
+    border-radius: 20px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(
+            91,
+            64,
+            56,
+            0.05
+        );
+
+}
+
+
+/* =========================================
+   CARD HEADING
+========================================= */
+
+.settings-card-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    padding-bottom: 22px;
+
+    border-bottom: 1px solid
+        rgba(
+            111,
+            77,
+            67,
+            0.10
+        );
+
+}
+
+
+.settings-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f7e5df;
+
+    font-size: 21px;
+
+}
+
+
+.settings-card-heading h2 {
+
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+
+    font-weight: 600;
+
+    color: #5b4038;
+
+}
+
+
+.settings-card-heading p {
+
+    margin: 4px 0 0;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 13px;
+
+    color: #8a7068;
+
+}
+
+
+/* =========================================
+   NAME FORM
+========================================= */
+
+.settings-form {
+
+    margin-top: 23px;
+
+}
+
+
+.settings-form label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #5b4038;
+
+}
+
+
+.name-input-row {
+
+    display: flex;
+
+    gap: 12px;
+
+}
+
+
+.name-input-row input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    border: 1px solid
+        rgba(
+            111,
+            77,
+            67,
+            0.16
+        );
+
+    border-radius: 11px;
+
+    padding: 12px 14px;
+
+    background: #fffdf9;
+
+    color: #5b4038;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 14px;
+
+    outline: none;
+
+}
+
+
+.name-input-row input:focus {
+
+    border-color: #df9295;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            223,
+            146,
+            149,
+            0.10
+        );
+
+}
+
+
+.name-input-row .primary-button {
+
+    flex-shrink: 0;
+
+}
+
+
+.settings-message {
+
+    min-height: 18px;
+
+    margin: 9px 0 0;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 12px;
+
+    color: #78907f;
+
+}
+
+
+/* =========================================
+   ABOUT
+========================================= */
+
+.about-content {
+
+    padding-top: 20px;
+
+}
+
+
+.about-content p {
+
+    margin: 0 0 10px;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    color: #806b63;
+
+}
+
+
+.version {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 20px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid
+        rgba(
+            111,
+            77,
+            67,
+            0.10
+        );
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 17px;
+
+    color: #5b4038;
+
+}
+
+
+.version span {
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 12px;
+
+    color: #a18a82;
+
+}
+
+
+/* =========================================
+   DATA
+========================================= */
+
+.data-content {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding-top: 20px;
+
+}
+
+
+.data-content h3 {
+
+    margin: 0 0 5px;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #5b4038;
+
+}
+
+
+.data-content p {
+
+    max-width: 560px;
+
+    margin: 0;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    color: #917b73;
+
+}
+
+
+.clear-data-button {
+
+    flex-shrink: 0;
+
+    border: 1px solid
+        rgba(
+            170,
+            95,
+            95,
+            0.30
+        );
+
+    background: #fff5f3;
+
+    color: #b66f72;
+
+    border-radius: 10px;
+
+    padding: 10px 15px;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+}
+
+
+.clear-data-button:hover {
+
+    background: #f8e2df;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+    .settings-card {
+
+        padding: 22px;
+
+    }
+
+
+    .name-input-row {
+
+        flex-direction: column;
+
+    }
+
+
+    .name-input-row .primary-button {
+
+        width: 100%;
+
+    }
+
+
+    .data-content {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+    .clear-data-button {
+
+        width: 100%;
+
+    }
+
+}
+
+</style>
+
+
+
+<script>
+
+
+/* =========================================
+   BLOOM SETTINGS
+========================================= */
+
+
+const userNameInput =
+    document.getElementById(
+        "userName"
+    );
+
+
+const saveNameButton =
+    document.getElementById(
+        "saveNameButton"
+    );
+
+
+const nameMessage =
+    document.getElementById(
+        "nameMessage"
+    );
+
+
+const clearDataButton =
+    document.getElementById(
+        "clearDataButton"
+    );
+
+
+
+/* =========================================
+   LOAD SAVED NAME
+========================================= */
+
+const savedName =
+    localStorage.getItem(
+        "bloomUserName"
+    );
+
+
+if (savedName) {
+
+    userNameInput.value =
+        savedName;
+
+}
+
+
+
+/* =========================================
+   SAVE NAME
+========================================= */
+
+saveNameButton.addEventListener(
+    "click",
+    function() {
+
+        const name =
+            userNameInput.value.trim();
+
+
+        if (name === "") {
+
+            nameMessage.textContent =
+                "Please enter your name ♡";
+
+            nameMessage.style.color =
+                "#b66f72";
+
+            return;
+
+        }
+
+
+        localStorage.setItem(
+            "bloomUserName",
+            name
+        );
+
+
+        nameMessage.textContent =
+            "Saved! Bloom knows your name now. 🌸";
+
+        nameMessage.style.color =
+            "#78907f";
+
+    }
+);
+
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+userNameInput.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            saveNameButton.click();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================
+   CLEAR ALL DATA
+========================================= */
+
+clearDataButton.addEventListener(
+    "click",
+    function() {
+
+        const confirmed =
+            confirm(
+                "Are you sure you want to clear all Bloom data?\n\nThis will permanently remove your tasks, skills, projects, certificates, universities, documents and notes."
+            );
+
+
+        if (!confirmed) {
+
+            return;
+
+        }
+
+
+        localStorage.removeItem(
+            "bloomTasks"
+        );
+
+        localStorage.removeItem(
+            "bloomSkills"
+        );
+
+        localStorage.removeItem(
+            "bloomProjects"
+        );
+
+        localStorage.removeItem(
+            "bloomCertificates"
+        );
+
+        localStorage.removeItem(
+            "bloomUniversities"
+        );
+
+        localStorage.removeItem(
+            "bloomDocuments"
+        );
+
+        localStorage.removeItem(
+            "bloomNotes"
+        );
+
+
+        /*
+         * Keep the person's name.
+         * Clearing Bloom data should not
+         * remove their personalization.
+         */
+
+        alert(
+            "Your Bloom data has been cleared. ♡"
+        );
+
+        location.reload();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bloom — Universities</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- BLOOM FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600&family=Lato:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================
+           PAGE
+        ========================================= */
+
+        .universities-page {
+            width: 100%;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .universities-page h1 {
+            font-family: "Allura", cursive !important;
+            font-size: 58px;
+            font-weight: 400;
+            color: #5b4038;
+            margin: 0;
+        }
+
+        .universities-page .page-subtitle {
+            font-family: "Lato", sans-serif !important;
+            font-size: 15px;
+            color: #8b7169;
+        }
+
+
+        /* =========================================
+           TOOLBAR
+        ========================================= */
+
+        .university-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .university-filters {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+        }
+
+        .university-filter {
+            border: 1px solid rgba(111, 77, 67, 0.15);
+            background: #fffaf3;
+            color: #795b52;
+
+            padding: 9px 17px;
+            border-radius: 30px;
+
+            font-family: "Lato", sans-serif !important;
+            font-size: 13px;
+
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .university-filter:hover {
+            background: #f8e4df;
+        }
+
+        .university-filter.active {
+            background: #df9295;
+            color: white;
+            border-color: #df9295;
+        }
+
+
+        /* =========================================
+           GRID
+        ========================================= */
+
+        .universities-list {
+            width: 100%;
+            margin-top: 28px;
+
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 24px;
+        }
+
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .university-card {
+            position: relative;
+            overflow: hidden;
+
+            background: #fffaf3;
+
+            border: 1px solid rgba(111, 77, 67, 0.14);
+            border-radius: 20px;
+
+            padding: 28px;
+
+            box-shadow:
+                0 8px 25px rgba(91, 64, 56, 0.05);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .university-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 14px 30px rgba(91, 64, 56, 0.09);
+        }
+
+        .university-card::after {
+            content: "✿";
+
+            position: absolute;
+            right: 20px;
+            top: 10px;
+
+            font-size: 25px;
+            color: #e7b3a8;
+
+            opacity: 0.65;
+        }
+
+
+        /* =========================================
+           CARD TOP
+        ========================================= */
+
+        .university-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            gap: 15px;
+        }
+
+        .university-card-title {
+            margin: 0;
+
+            font-family: "Cormorant Garamond", serif !important;
+            font-size: 28px;
+            font-weight: 600;
+
+            color: #5b4038;
+        }
+
+        .university-country {
+            margin-top: 5px;
+
+            font-family: "Lato", sans-serif !important;
+            font-size: 13px;
+
+            color: #c9787e;
+        }
+
+
+        /* =========================================
+           STATUS
+        ========================================= */
+
+        .university-status {
+            white-space: nowrap;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            background: #f5e6df;
+            color: #8b655d;
+
+            font-family: "Lato", sans-serif !important;
+            font-size: 12px;
+        }
+
+
+        /* =========================================
+           DETAILS
+        ========================================= */
+
+        .university-details {
+            margin-top: 22px;
+
+            display: grid;
+            gap: 12px;
+        }
+
+        .university-detail {
+            display: flex;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding-bottom: 10px;
+
+            border-bottom:
+                1px dashed rgba(111, 77, 67, 0.12);
+        }
+
+        .university-detail-label {
+            font-family: "Lato", sans-serif !important;
+            font-size: 12px;
+
+            color: #a4877f;
+        }
+
+        .university-detail-value {
+            font-family: "Lato", sans-serif !important;
+            font-size: 13px;
+
+            color: #5b4038;
+
+            text-align: right;
+        }
+
+
+        /* =========================================
+           NOTES
+        ========================================= */
+
+        .university-notes {
+            margin-top: 18px;
+
+            padding: 13px 15px;
+
+            background: #faf0e8;
+
+            border-radius: 12px;
+
+            font-family: "Lato", sans-serif !important;
+            font-size: 13px;
+
+            color: #765d55;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           ACTIONS
+        ========================================= */
+
+        .university-card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-top: 20px;
+            padding-top: 15px;
+
+            border-top:
+                1px solid rgba(111, 77, 67, 0.1);
+        }
+
+        .university-action-button {
+            border: none;
+            background: none;
+
+            font-family: "Lato", sans-serif !important;
+            font-size: 13px;
+
+            cursor: pointer;
+        }
+
+        .university-link-button {
+            color: #7897a3;
+        }
+
+        .university-delete-button {
+            color: #a98b83;
+        }
+
+
+        /* =========================================
+           EMPTY STATE
+        ========================================= */
+
+        .universities-empty {
+            grid-column: 1 / -1;
+
+            min-height: 330px;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            background: #fffaf3;
+
+            border:
+                1px dashed rgba(111, 77, 67, 0.18);
+
+            border-radius: 20px;
+
+            padding: 40px;
+        }
+
+        .universities-empty-flower {
+            width: 70px;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #f7e5df;
+
+            border-radius: 50%;
+
+            font-size: 32px;
+
+            margin-bottom: 18px;
+        }
+
+        .universities-empty h2 {
+            margin: 0;
+
+            font-family: "Allura", cursive !important;
+            font-size: 43px;
+            font-weight: 400;
+
+            color: #5b4038;
+        }
+
+        .universities-empty p {
+            margin: 8px 0 20px;
+
+            font-family: "Lato", sans-serif !important;
+            font-size: 14px;
+
+            color: #8b7169;
+        }
+
+
+        /* =========================================
+           MODAL
+        ========================================= */
+
+        .university-modal {
+            display: none;
+
+            position: fixed;
+            inset: 0;
+
+            z-index: 9999;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background: rgba(67, 48, 43, 0.35);
+        }
+
+        .university-modal.show {
+            display: flex;
+        }
+
+        .university-modal-box {
+            width: 100%;
+            max-width: 600px;
+
+            max-height: 90vh;
+            overflow-y: auto;
+
+            position: relative;
+
+            background: #fffaf3;
+
+            border-radius: 22px;
+
+            padding: 32px;
+
+            box-shadow:
+                0 20px 60px rgba(70, 50, 45, 0.2);
+        }
+
+        .university-modal-box h2 {
+            margin: 0 0 5px;
+
+            font-family: "Allura", cursive !important;
+            font-size: 43px;
+            font-weight: 400;
+
+            color: #5b4038;
+        }
+
+        .university-modal-subtitle {
+            margin: 0 0 25px;
+
+            font-family: "Lato", sans-serif !important;
+            font-size: 14px;
+
+            color: #8b7169;
+        }
+
+        .university-close {
+            position: absolute;
+
+            top: 18px;
+            right: 20px;
+
+            border: none;
+            background: none;
+
+            font-size: 25px;
+
+            color: #8b7169;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================
+           FORM
+        ========================================= */
+
+        .university-form {
+            display: grid;
+            gap: 17px;
+        }
+
+        .university-form-group {
+            display: grid;
+            gap: 7px;
+        }
+
+        .university-form-group label {
+            font-family: "Lato", sans-serif !important;
+            font-size: 13px;
+
+            color: #5b4038;
+        }
+
+        .university-form-group input,
+        .university-form-group select,
+        .university-form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+
+            border:
+                1px solid rgba(111, 77, 67, 0.18);
+
+            background: #fffdf9;
+
+            border-radius: 11px;
+
+            padding: 11px 13px;
+
+            font-family: "Lato", sans-serif !important;
+            font-size: 13px;
+
+            color: #5b4038;
+
+            outline: none;
+        }
+
+        .university-form-group textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .university-form-group input:focus,
+        .university-form-group select:focus,
+        .university-form-group textarea:focus {
+            border-color: #df9295;
+        }
+
+        .university-form-row {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+        }
+
+        .university-save-button {
+            margin-top: 5px;
+
+            border: none;
+
+            background: #df9295;
+            color: white;
+
+            padding: 13px 20px;
+
+            border-radius: 12px;
+
+            font-family: "Lato", sans-serif !important;
+            font-size: 14px;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .university-save-button:hover {
+            background: #cf7d82;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 850px) {
+
+            .universities-list {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .university-form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .university-card-top {
+                flex-direction: column;
+            }
+
+            .university-detail {
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .university-detail-value {
+                text-align: left;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+
+  
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <span class="brand-flower">🌸</span>
+
+            <span class="brand-name">
+                Bloom
+            </span>
+
+        </div>
+
+       <nav class="sidebar-nav">
+
+    <a href="index.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Home</span>
+    </a>
+
+    <a href="tasks.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Tasks</span>
+    </a>
+
+    <a href="skills.html" class="nav-item">
+        <span class="nav-icon">✿</span>
+        <span>Skills</span>
+    </a>
+
+    <a href="projects.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Projects</span>
+    </a>
+
+    <a href="certificates.html" class="nav-item">
+        <span class="nav-icon">✧</span>
+        <span>Certificates</span>
+    </a>
+
+    <a href="universities.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Universities</span>
+    </a>
+
+    <a href="documents.html" class="nav-item">
+        <span class="nav-icon">▱</span>
+        <span>Documents</span>
+    </a>
+
+    <a href="notes.html" class="nav-item">
+        <span class="nav-icon">✎</span>
+        <span>Notes</span>
+    </a>
+
+    <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+    </a>
+
+</nav>
+
+    </aside>
+
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <section class="universities-page">
+
+
+            <!-- HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        my future ♡
+                    </p>
+
+                    <h1>
+                        Universities
+                    </h1>
+
+                    <p class="page-subtitle">
+                        Keep track of the Master's programmes
+                        I'm dreaming about.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="primary-button"
+                    id="openUniversityModal"
+                >
+                    + Add University
+                </button>
+
+            </div>
+
+
+            <!-- FILTERS -->
+
+            <div class="university-toolbar">
+
+                <div class="university-filters">
+
+                    <button
+                        class="university-filter active"
+                        data-filter="All"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        class="university-filter"
+                        data-filter="Interested"
+                    >
+                        Interested
+                    </button>
+
+                    <button
+                        class="university-filter"
+                        data-filter="Researching"
+                    >
+                        Researching
+                    </button>
+
+                    <button
+                        class="university-filter"
+                        data-filter="Preparing"
+                    >
+                        Preparing
+                    </button>
+
+                    <button
+                        class="university-filter"
+                        data-filter="Applied"
+                    >
+                        Applied
+                    </button>
+
+                    <button
+                        class="university-filter"
+                        data-filter="Accepted"
+                    >
+                        Accepted
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- UNIVERSITIES -->
+
+            <div
+                class="universities-list"
+                id="universitiesList"
+            ></div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================
+     MODAL
+========================================= -->
+
+<div
+    class="university-modal"
+    id="universityModal"
+>
+
+    <div class="university-modal-box">
+
+        <button
+            class="university-close"
+            id="closeUniversityModal"
+        >
+            ×
+        </button>
+
+
+        <h2>
+            Add a university ♡
+        </h2>
+
+        <p class="university-modal-subtitle">
+            Save a Master's programme you're considering.
+        </p>
+
+
+        <form
+            class="university-form"
+            id="universityForm"
+        >
+
+
+            <div class="university-form-group">
+
+                <label for="universityName">
+                    University name
+                </label>
+
+                <input
+                    type="text"
+                    id="universityName"
+                    placeholder="e.g. Bocconi University"
+                    required
+                >
+
+            </div>
+
+
+            <div class="university-form-group">
+
+                <label for="universityCountry">
+                    Country
+                </label>
+
+                <input
+                    type="text"
+                    id="universityCountry"
+                    placeholder="e.g. Italy"
+                    required
+                >
+
+            </div>
+
+
+            <div class="university-form-group">
+
+                <label for="universityProgramme">
+                    Master's programme
+                </label>
+
+                <input
+                    type="text"
+                    id="universityProgramme"
+                    placeholder="e.g. MSc Marketing Management"
+                    required
+                >
+
+            </div>
+
+
+            <div class="university-form-row">
+
+                <div class="university-form-group">
+
+                    <label for="universityScholarship">
+                        Scholarship
+                    </label>
+
+                    <input
+                        type="text"
+                        id="universityScholarship"
+                        placeholder="e.g. Merit Scholarship"
+                    >
+
+                </div>
+
+
+                <div class="university-form-group">
+
+                    <label for="universityDeadline">
+                        Deadline
+                    </label>
+
+                    <input
+                        type="date"
+                        id="universityDeadline"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="university-form-group">
+
+                <label for="universityStatus">
+                    Application status
+                </label>
+
+                <select id="universityStatus">
+
+                    <option value="Interested">
+                        Interested
+                    </option>
+
+                    <option value="Researching">
+                        Researching
+                    </option>
+
+                    <option value="Preparing">
+                        Preparing
+                    </option>
+
+                    <option value="Applied">
+                        Applied
+                    </option>
+
+                    <option value="Accepted">
+                        Accepted
+                    </option>
+
+                    <option value="Rejected">
+                        Rejected
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="university-form-group">
+
+                <label for="universityLink">
+                    University / programme link
+                </label>
+
+                <input
+                    type="url"
+                    id="universityLink"
+                    placeholder="https://..."
+                >
+
+            </div>
+
+
+            <div class="university-form-group">
+
+                <label for="universityNotes">
+                    Private notes
+                </label>
+
+                <textarea
+                    id="universityNotes"
+                    placeholder="Scholarship requirements, things to research, thoughts..."
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="university-save-button"
+            >
+                Save University ♡
+            </button>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* =========================================
+       LOAD DATA
+    ========================================= */
+
+    let universities = [];
+
+    try {
+
+        universities =
+            JSON.parse(
+                localStorage.getItem(
+                    "bloomUniversities"
+                )
+            ) || [];
+
+    } catch (error) {
+
+        universities = [];
+
+    }
+
+
+    /* =========================================
+       ELEMENTS
+    ========================================= */
+
+    const universityModal =
+        document.getElementById(
+            "universityModal"
+        );
+
+    const openUniversityModal =
+        document.getElementById(
+            "openUniversityModal"
+        );
+
+    const closeUniversityModal =
+        document.getElementById(
+            "closeUniversityModal"
+        );
+
+    const universityForm =
+        document.getElementById(
+            "universityForm"
+        );
+
+    const universitiesList =
+        document.getElementById(
+            "universitiesList"
+        );
+
+    const universityFilters =
+        document.querySelectorAll(
+            ".university-filter"
+        );
+
+
+    let currentFilter = "All";
+
+
+    /* =========================================
+       OPEN MODAL
+    ========================================= */
+
+    openUniversityModal.addEventListener(
+        "click",
+        function () {
+
+            universityModal.classList.add(
+                "show"
+            );
+
+        }
+    );
+
+
+    /* =========================================
+       CLOSE MODAL
+    ========================================= */
+
+    closeUniversityModal.addEventListener(
+        "click",
+        function () {
+
+            universityModal.classList.remove(
+                "show"
+            );
+
+        }
+    );
+
+
+    universityModal.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target === universityModal
+            ) {
+
+                universityModal.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       ADD UNIVERSITY
+    ========================================= */
+
+    universityForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            const newUniversity = {
+
+                id: Date.now(),
+
+                name:
+                    document
+                        .getElementById(
+                            "universityName"
+                        )
+                        .value
+                        .trim(),
+
+                country:
+                    document
+                        .getElementById(
+                            "universityCountry"
+                        )
+                        .value
+                        .trim(),
+
+                programme:
+                    document
+                        .getElementById(
+                            "universityProgramme"
+                        )
+                        .value
+                        .trim(),
+
+                scholarship:
+                    document
+                        .getElementById(
+                            "universityScholarship"
+                        )
+                        .value
+                        .trim(),
+
+                deadline:
+                    document
+                        .getElementById(
+                            "universityDeadline"
+                        )
+                        .value,
+
+                status:
+                    document
+                        .getElementById(
+                            "universityStatus"
+                        )
+                        .value,
+
+                link:
+                    document
+                        .getElementById(
+                            "universityLink"
+                        )
+                        .value
+                        .trim(),
+
+                notes:
+                    document
+                        .getElementById(
+                            "universityNotes"
+                        )
+                        .value
+                        .trim()
+
+            };
+
+
+            universities.push(
+                newUniversity
+            );
+
+
+            localStorage.setItem(
+                "bloomUniversities",
+                JSON.stringify(
+                    universities
+                )
+            );
+
+
+            universityForm.reset();
+
+            universityModal.classList.remove(
+                "show"
+            );
+
+
+            displayUniversities();
+
+        }
+    );
+
+
+    /* =========================================
+       DATE
+    ========================================= */
+
+    function formatDeadline(date) {
+
+        if (!date) {
+
+            return "Not added";
+
+        }
+
+
+        const parts =
+            date.split("-");
+
+
+        return (
+            parts[2] +
+            "/" +
+            parts[1] +
+            "/" +
+            parts[0]
+        );
+
+    }
+
+
+    /* =========================================
+       DISPLAY
+    ========================================= */
+
+    function displayUniversities() {
+
+        universitiesList.innerHTML = "";
+
+
+        let filteredUniversities;
+
+
+        if (currentFilter === "All") {
+
+            filteredUniversities =
+                universities;
+
+        } else {
+
+            filteredUniversities =
+                universities.filter(
+                    function (university) {
+
+                        return (
+                            university.status ===
+                            currentFilter
+                        );
+
+                    }
+                );
+
+        }
+
+
+        if (
+            filteredUniversities.length === 0
+        ) {
+
+            universitiesList.innerHTML =
+
+                '<div class="universities-empty">' +
+
+                    '<div class="universities-empty-flower">' +
+                        '🌸' +
+                    '</div>' +
+
+                    '<h2>' +
+                        (
+                            currentFilter === "All"
+                            ? "Your university list is waiting ♡"
+                            : "Nothing here yet ♡"
+                        ) +
+                    '</h2>' +
+
+                    '<p>' +
+                        (
+                            currentFilter === "All"
+                            ? "Add the Master's programmes you're dreaming about."
+                            : "No universities have this status yet."
+                        ) +
+                    '</p>' +
+
+                '</div>';
+
+            return;
+
+        }
+
+
+        filteredUniversities.forEach(
+            function (university) {
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "university-card";
+
+
+                card.innerHTML =
+
+                    '<div class="university-card-top">' +
+
+                        '<div>' +
+
+                            '<h3 class="university-card-title">' +
+                                university.name +
+                            '</h3>' +
+
+                            '<div class="university-country">' +
+                                university.country +
+                            '</div>' +
+
+                        '</div>' +
+
+                        '<span class="university-status">' +
+                            university.status +
+                        '</span>' +
+
+                    '</div>' +
+
+
+                    '<div class="university-details">' +
+
+                        '<div class="university-detail">' +
+
+                            '<span class="university-detail-label">' +
+                                'Programme' +
+                            '</span>' +
+
+                            '<span class="university-detail-value">' +
+                                university.programme +
+                            '</span>' +
+
+                        '</div>' +
+
+
+                        '<div class="university-detail">' +
+
+                            '<span class="university-detail-label">' +
+                                'Scholarship' +
+                            '</span>' +
+
+                            '<span class="university-detail-value">' +
+                                (
+                                    university.scholarship ||
+                                    "Not added"
+                                ) +
+                            '</span>' +
+
+                        '</div>' +
+
+
+                        '<div class="university-detail">' +
+
+                            '<span class="university-detail-label">' +
+                                'Deadline' +
+                            '</span>' +
+
+                            '<span class="university-detail-value">' +
+                                formatDeadline(
+                                    university.deadline
+                                ) +
+                            '</span>' +
+
+                        '</div>' +
+
+                    '</div>' +
+
+
+                    (
+                        university.notes
+
+                        ?
+
+                        '<div class="university-notes">' +
+                            university.notes +
+                        '</div>'
+
+                        :
+
+                        ''
+                    ) +
+
+
+                    '<div class="university-card-actions">' +
+
+                        (
+                            university.link
+
+                            ?
+
+                            '<button ' +
+                                'class="university-action-button university-link-button" ' +
+                                'data-link="' +
+                                    university.link +
+                                '">' +
+                                'Open programme ↗' +
+                            '</button>'
+
+                            :
+
+                            '<span></span>'
+                        ) +
+
+
+                        '<button ' +
+                            'class="university-action-button university-delete-button" ' +
+                            'data-id="' +
+                                university.id +
+                            '">' +
+                            'Remove' +
+                        '</button>' +
+
+                    '</div>';
+
+
+                universitiesList.appendChild(
+                    card
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       FILTERS
+    ========================================= */
+
+    universityFilters.forEach(
+        function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    universityFilters.forEach(
+                        function (item) {
+
+                            item.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                    button.classList.add(
+                        "active"
+                    );
+
+
+                    currentFilter =
+                        button.dataset.filter;
+
+
+                    displayUniversities();
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =========================================
+       CARD BUTTONS
+    ========================================= */
+
+    universitiesList.addEventListener(
+        "click",
+        function (event) {
+
+
+            /* LINK */
+
+            if (
+                event.target.classList.contains(
+                    "university-link-button"
+                )
+            ) {
+
+                const link =
+                    event.target.dataset.link;
+
+
+                if (link) {
+
+                    window.open(
+                        link,
+                        "_blank"
+                    );
+
+                }
+
+            }
+
+
+            /* REMOVE */
+
+            if (
+                event.target.classList.contains(
+                    "university-delete-button"
+                )
+            ) {
+
+                const id =
+                    Number(
+                        event.target.dataset.id
+                    );
+
+
+                universities =
+                    universities.filter(
+                        function (university) {
+
+                            return (
+                                university.id !== id
+                            );
+
+                        }
+                    );
+
+
+                localStorage.setItem(
+                    "bloomUniversities",
+                    JSON.stringify(
+                        universities
+                    )
+                );
+
+
+                displayUniversities();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       START
+    ========================================= */
+
+    displayUniversities();
+
+</script>
+
+</body>
+</html>

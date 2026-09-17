@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Certificates ♡ Bloom</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+
+    <style>
+
+        /* =====================================
+           CERTIFICATE PAGE
+        ===================================== */
+
+        .certificate-filters {
+            display: flex;
+            gap: 10px;
+            margin-top: 28px;
+            margin-bottom: 22px;
+        }
+
+        .certificate-filter {
+            border: 1px solid rgba(111, 77, 67, 0.15);
+            background: #fffaf3;
+            color: #8b7770;
+
+            padding: 9px 20px;
+
+            border-radius: 50px;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        .certificate-filter.active {
+            background: #df9295;
+            color: white;
+            border-color: #df9295;
+        }
+
+
+        /* =====================================
+           LIST
+        ===================================== */
+
+        .certificate-checklist {
+            width: 100%;
+        }
+
+        .certificate-checklist-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+
+        /* =====================================
+           CERTIFICATE ITEM
+        ===================================== */
+
+        .certificate-checklist-item {
+            display: flex;
+            align-items: center;
+
+            gap: 17px;
+
+            min-height: 76px;
+
+            padding: 17px 22px;
+
+            background: #fffaf3;
+
+            border: 1px solid rgba(111, 77, 67, 0.13);
+
+            border-radius: 17px;
+
+            box-shadow:
+                0 6px 20px rgba(91, 64, 56, 0.04);
+        }
+
+
+        /* =====================================
+           CHECKBOX
+        ===================================== */
+
+        .certificate-checkbox {
+            flex-shrink: 0;
+
+            width: 28px;
+            height: 28px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1.5px solid #d49396;
+
+            border-radius: 50%;
+
+            background: transparent;
+
+            color: white;
+
+            font-size: 17px;
+
+            cursor: pointer;
+        }
+
+        .certificate-checkbox.checked {
+            background: #df9295;
+            border-color: #df9295;
+        }
+
+
+        /* =====================================
+           TEXT
+        ===================================== */
+
+        .certificate-checklist-info {
+            flex: 1;
+        }
+
+        .certificate-checklist-name {
+            margin: 0;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 22px;
+
+            font-weight: 600;
+
+            color: #5b4038;
+        }
+
+        .certificate-checklist-provider {
+            margin-top: 3px;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 15px;
+
+            color: #a98b83;
+        }
+
+
+        /* =====================================
+           CATEGORY
+        ===================================== */
+
+        .certificate-checklist-category {
+            padding: 6px 12px;
+
+            border-radius: 50px;
+
+            background: #f7e5df;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 14px;
+
+            color: #c77c82;
+        }
+
+
+        /* =====================================
+           REMOVE
+        ===================================== */
+
+        .delete-certificate-button {
+            border: none;
+
+            background: transparent;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 14px;
+
+            color: #a98b83;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================
+           COMPLETED
+        ===================================== */
+
+        .certificate-checklist-item.completed {
+            opacity: 0.6;
+        }
+
+        .certificate-checklist-item.completed
+        .certificate-checklist-name {
+            text-decoration: line-through;
+        }
+
+
+        /* =====================================
+           EMPTY
+        ===================================== */
+
+        .certificates-empty-state {
+            min-height: 300px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 45px 30px;
+
+            background: #fffaf3;
+
+            border: 1px dashed rgba(111, 77, 67, 0.20);
+
+            border-radius: 20px;
+        }
+
+        .empty-certificate-flower {
+            width: 68px;
+            height: 68px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 16px;
+
+            border-radius: 50%;
+
+            background: #f7e5df;
+
+            font-size: 32px;
+
+            color: #cf7d82;
+        }
+
+        .certificates-empty-state h2 {
+            margin: 0 0 8px;
+
+            font-family: "Allura", cursive;
+
+            font-size: 42px;
+
+            font-weight: 400;
+
+            color: #5b4038;
+        }
+
+        .certificates-empty-state p {
+            margin: 0 0 22px;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 17px;
+
+            color: #8b7770;
+        }
+
+
+        /* =====================================
+           EMPTY BUTTON
+        ===================================== */
+
+        .certificate-add-empty {
+            border: 1px solid #d49396;
+
+            background: #fffaf3;
+
+            color: #c77c82;
+
+            padding: 10px 22px;
+
+            border-radius: 50px;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        .certificate-add-empty:hover {
+            background: #df9295;
+
+            color: white;
+        }
+
+
+        /* =====================================
+           MODAL
+        ===================================== */
+
+        #certificateModal {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(91, 64, 56, 0.25);
+
+            padding: 20px;
+        }
+
+        #certificateModal.show {
+            display: flex;
+        }
+
+        #certificateModal .modal-box {
+            position: relative;
+
+            width: 100%;
+
+            max-width: 500px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            padding: 35px;
+
+            background: #fffaf3;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 20px 60px rgba(91, 64, 56, 0.18);
+        }
+
+
+        /* CLOSE */
+
+        #closeCertificateModal {
+            position: absolute;
+
+            top: 15px;
+            right: 18px;
+
+            border: none;
+
+            background: transparent;
+
+            font-size: 27px;
+
+            color: #8b7770;
+
+            cursor: pointer;
+        }
+
+
+        /* MODAL TITLE */
+
+        #certificateModal h2 {
+            margin: 0 0 6px;
+
+            font-family: "Allura", cursive;
+
+            font-size: 42px;
+
+            font-weight: 400;
+
+            color: #5b4038;
+        }
+
+        #certificateModal .modal-subtitle {
+            margin: 0 0 25px;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 16px;
+
+            color: #8b7770;
+        }
+
+
+        /* FORM */
+
+        #certificateForm .form-group {
+            margin-bottom: 18px;
+        }
+
+        #certificateForm label {
+            display: block;
+
+            margin-bottom: 6px;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 16px;
+
+            color: #5b4038;
+        }
+
+        #certificateForm input,
+        #certificateForm select {
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 11px 13px;
+
+            border: 1px solid rgba(111, 77, 67, 0.18);
+
+            border-radius: 10px;
+
+            background: white;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 16px;
+
+            color: #5b4038;
+
+            outline: none;
+        }
+
+        #certificateForm input:focus,
+        #certificateForm select:focus {
+            border-color: #d49396;
+        }
+
+
+        /* SAVE */
+
+        #saveCertificateButton {
+            width: 100%;
+
+            border: none;
+
+            padding: 12px;
+
+            border-radius: 50px;
+
+            background: #df9295;
+
+            color: white;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 17px;
+
+            cursor: pointer;
+        }
+
+        #saveCertificateButton:hover {
+            opacity: 0.85;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="app-shell">
+
+
+     
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <span class="brand-flower">🌸</span>
+
+            <span class="brand-name">
+                Bloom
+            </span>
+
+        </div>
+
+       <nav class="sidebar-nav">
+
+    <a href="index.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Home</span>
+    </a>
+
+    <a href="tasks.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Tasks</span>
+    </a>
+
+    <a href="skills.html" class="nav-item">
+        <span class="nav-icon">✿</span>
+        <span>Skills</span>
+    </a>
+
+    <a href="projects.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Projects</span>
+    </a>
+
+    <a href="certificates.html" class="nav-item">
+        <span class="nav-icon">✧</span>
+        <span>Certificates</span>
+    </a>
+
+    <a href="universities.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Universities</span>
+    </a>
+
+    <a href="documents.html" class="nav-item">
+        <span class="nav-icon">▱</span>
+        <span>Documents</span>
+    </a>
+
+    <a href="notes.html" class="nav-item">
+        <span class="nav-icon">✎</span>
+        <span>Notes</span>
+    </a>
+
+    <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+    </a>
+
+</nav>
+
+    </aside>
+
+
+        <!-- =========================
+             MAIN
+        ========================== -->
+
+        <main class="main-content">
+
+
+            <header class="page-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        little goals ♡
+                    </p>
+
+                    <h1>
+                        Certificates
+                    </h1>
+
+                    <p class="page-subtitle">
+                        A little checklist of the certificates I want to complete.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="primary-button"
+                    id="openCertificateModal"
+                    type="button"
+                >
+                    + Add Certificate
+                </button>
+
+            </header>
+
+
+            <!-- FILTERS -->
+
+            <div class="certificate-filters">
+
+                <button
+                    class="certificate-filter active"
+                    data-filter="all"
+                    type="button"
+                >
+                    All
+                </button>
+
+                <button
+                    class="certificate-filter"
+                    data-filter="todo"
+                    type="button"
+                >
+                    To do
+                </button>
+
+                <button
+                    class="certificate-filter"
+                    data-filter="completed"
+                    type="button"
+                >
+                    Completed
+                </button>
+
+            </div>
+
+
+            <!-- LIST -->
+
+            <section class="certificate-checklist">
+
+                <div
+                    id="certificatesList"
+                    class="certificate-checklist-list"
+                ></div>
+
+
+                <div
+                    id="emptyCertificates"
+                    class="certificates-empty-state"
+                >
+
+                    <div class="empty-certificate-flower">
+                        ❀
+                    </div>
+
+                    <h2>
+                        Your certificate list is empty ♡
+                    </h2>
+
+                    <p>
+                        Add the certificates and courses
+                        you want to complete.
+                    </p>
+
+                    <button
+                        id="emptyAddCertificate"
+                        class="certificate-add-empty"
+                        type="button"
+                    >
+                        Add a certificate
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL
+    ========================== -->
+
+    <div id="certificateModal">
+
+        <div class="modal-box">
+
+
+            <button
+                id="closeCertificateModal"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <p class="eyebrow">
+                one more little goal ♡
+            </p>
+
+
+            <h2>
+                Add Certificate
+            </h2>
+
+
+            <p class="modal-subtitle">
+                What certificate do you want to complete?
+            </p>
+
+
+            <form id="certificateForm">
+
+
+                <div class="form-group">
+
+                    <label for="certificateName">
+                        Certificate name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="certificateName"
+                        placeholder="e.g. SQL for Beginners"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="certificateProvider">
+                        Provider
+                    </label>
+
+                    <input
+                        type="text"
+                        id="certificateProvider"
+                        placeholder="e.g. Kaggle"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="certificateCategory">
+                        Category
+                    </label>
+
+                    <select id="certificateCategory">
+
+                        <option value="Technical">
+                            Technical
+                        </option>
+
+                        <option value="Marketing">
+                            Marketing
+                        </option>
+
+                        <option value="CRM">
+                            CRM
+                        </option>
+
+                        <option value="Business">
+                            Business
+                        </option>
+
+                        <option value="Fashion & Luxury">
+                            Fashion & Luxury
+                        </option>
+
+                        <option value="Design">
+                            Design
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    id="saveCertificateButton"
+                    type="submit"
+                >
+                    Add to my checklist ♡
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CERTIFICATE JAVASCRIPT
+         Completely independent!
+    ========================== -->
+
+    <script>
+
+        let certificates = [];
+
+        let currentFilter = "all";
+
+
+        /* LOAD */
+
+        try {
+
+            const saved =
+                localStorage.getItem("bloomCertificates");
+
+            if (saved) {
+
+                const data =
+                    JSON.parse(saved);
+
+                if (Array.isArray(data)) {
+
+                    certificates = data.map(
+                        function(item) {
+
+                            return {
+
+                                id:
+                                    item.id ||
+                                    Date.now(),
+
+                                name:
+                                    item.name ||
+                                    "Certificate",
+
+                                provider:
+                                    item.provider ||
+                                    "",
+
+                                category:
+                                    item.category ||
+                                    "Other",
+
+                                completed:
+                                    item.completed === true
+
+                            };
+
+                        }
+                    );
+
+                }
+
+            }
+
+        } catch (error) {
+
+            certificates = [];
+
+        }
+
+
+        /* ELEMENTS */
+
+        const list =
+            document.getElementById(
+                "certificatesList"
+            );
+
+        const modal =
+            document.getElementById(
+                "certificateModal"
+            );
+
+        const form =
+            document.getElementById(
+                "certificateForm"
+            );
+
+        const openButton =
+            document.getElementById(
+                "openCertificateModal"
+            );
+
+        const emptyButton =
+            document.getElementById(
+                "emptyAddCertificate"
+            );
+
+        const closeButton =
+            document.getElementById(
+                "closeCertificateModal"
+            );
+
+
+        /* SAVE */
+
+        function saveCertificates() {
+
+            localStorage.setItem(
+                "bloomCertificates",
+                JSON.stringify(certificates)
+            );
+
+        }
+
+
+        /* OPEN */
+
+        function openModal() {
+
+            modal.classList.add("show");
+
+        }
+
+
+        openButton.addEventListener(
+            "click",
+            openModal
+        );
+
+
+        emptyButton.addEventListener(
+            "click",
+            openModal
+        );
+
+
+        /* CLOSE */
+
+        closeButton.addEventListener(
+            "click",
+            function() {
+
+                modal.classList.remove(
+                    "show"
+                );
+
+            }
+        );
+
+
+        modal.addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target === modal
+                ) {
+
+                    modal.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* ADD */
+
+        form.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document
+                        .getElementById(
+                            "certificateName"
+                        )
+                        .value
+                        .trim();
+
+
+                const provider =
+                    document
+                        .getElementById(
+                            "certificateProvider"
+                        )
+                        .value
+                        .trim();
+
+
+                const category =
+                    document
+                        .getElementById(
+                            "certificateCategory"
+                        )
+                        .value;
+
+
+                if (!name) {
+
+                    return;
+
+                }
+
+
+                certificates.push({
+
+                    id: Date.now(),
+
+                    name: name,
+
+                    provider: provider,
+
+                    category: category,
+
+                    completed: false
+
+                });
+
+
+                saveCertificates();
+
+
+                form.reset();
+
+
+                modal.classList.remove(
+                    "show"
+                );
+
+
+                currentFilter = "all";
+
+
+                document
+                    .querySelectorAll(
+                        ".certificate-filter"
+                    )
+                    .forEach(
+                        function(button) {
+
+                            button.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                document
+                    .querySelector(
+                        '[data-filter="all"]'
+                    )
+                    .classList.add(
+                        "active"
+                    );
+
+
+                displayCertificates();
+
+            }
+        );
+
+
+        /* FILTERS */
+
+        document
+            .querySelectorAll(
+                ".certificate-filter"
+            )
+            .forEach(
+                function(button) {
+
+                    button.addEventListener(
+                        "click",
+                        function() {
+
+                            document
+                                .querySelectorAll(
+                                    ".certificate-filter"
+                                )
+                                .forEach(
+                                    function(item) {
+
+                                        item.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                            button.classList.add(
+                                "active"
+                            );
+
+
+                            currentFilter =
+                                button.dataset.filter;
+
+
+                            displayCertificates();
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* DISPLAY */
+
+        function displayCertificates() {
+
+            list.innerHTML = "";
+
+
+            let visible =
+                certificates;
+
+
+            if (
+                currentFilter === "todo"
+            ) {
+
+                visible =
+                    certificates.filter(
+                        function(item) {
+
+                            return !item.completed;
+
+                        }
+                    );
+
+            }
+
+
+            if (
+                currentFilter === "completed"
+            ) {
+
+                visible =
+                    certificates.filter(
+                        function(item) {
+
+                            return item.completed;
+
+                        }
+                    );
+
+            }
+
+
+            const empty =
+                document.getElementById(
+                    "emptyCertificates"
+                );
+
+
+            if (visible.length === 0) {
+
+                empty.style.display = "flex";
+
+                return;
+
+            }
+
+
+            empty.style.display = "none";
+
+
+            visible.forEach(
+                function(certificate) {
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    item.className =
+                        "certificate-checklist-item";
+
+
+                    if (
+                        certificate.completed
+                    ) {
+
+                        item.classList.add(
+                            "completed"
+                        );
+
+                    }
+
+
+                    item.innerHTML =
+
+                        '<button ' +
+                            'type="button" ' +
+                            'class="certificate-checkbox ' +
+                            (
+                                certificate.completed
+                                ? "checked"
+                                : ""
+                            ) +
+                            '" ' +
+                            'data-id="' +
+                            certificate.id +
+                        '">' +
+
+                            (
+                                certificate.completed
+                                ? "✓"
+                                : ""
+                            ) +
+
+                        '</button>' +
+
+
+                        '<div class="certificate-checklist-info">' +
+
+                            '<h3 class="certificate-checklist-name">' +
+                                certificate.name +
+                            '</h3>' +
+
+                            (
+                                certificate.provider
+                                ?
+                                '<div class="certificate-checklist-provider">' +
+                                    certificate.provider +
+                                '</div>'
+                                :
+                                ''
+                            ) +
+
+                        '</div>' +
+
+
+                        '<span class="certificate-checklist-category">' +
+                            certificate.category +
+                        '</span>' +
+
+
+                        '<button ' +
+                            'type="button" ' +
+                            'class="delete-certificate-button" ' +
+                            'data-id="' +
+                            certificate.id +
+                        '">' +
+                            'Remove' +
+                        '</button>';
+
+
+                    list.appendChild(item);
+
+                }
+            );
+
+        }
+
+
+        /* CHECK + DELETE */
+
+        list.addEventListener(
+            "click",
+            function(event) {
+
+
+                if (
+                    event.target.classList.contains(
+                        "certificate-checkbox"
+                    )
+                ) {
+
+                    const id =
+                        Number(
+                            event.target.dataset.id
+                        );
+
+
+                    const certificate =
+                        certificates.find(
+                            function(item) {
+
+                                return (
+                                    Number(item.id) ===
+                                    id
+                                );
+
+                            }
+                        );
+
+
+                    if (certificate) {
+
+                        certificate.completed =
+                            !certificate.completed;
+
+                        saveCertificates();
+
+                        displayCertificates();
+
+                    }
+
+                }
+
+
+                if (
+                    event.target.classList.contains(
+                        "delete-certificate-button"
+                    )
+                ) {
+
+                    const id =
+                        Number(
+                            event.target.dataset.id
+                        );
+
+
+                    certificates =
+                        certificates.filter(
+                            function(item) {
+
+                                return (
+                                    Number(item.id) !==
+                                    id
+                                );
+
+                            }
+                        );
+
+
+                    saveCertificates();
+
+                    displayCertificates();
+
+                }
+
+            }
+        );
+
+
+        /* START */
+
+        displayCertificates();
+
+    </script>
+
+</body>
+
+</html>

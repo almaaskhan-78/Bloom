@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bloom</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bloom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="bloom-app">
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <span class="brand-flower">🌸</span>
+
+            <span class="brand-name">
+                Bloom
+            </span>
+
+        </div>
+
+       <nav class="sidebar-nav">
+
+    <a href="index.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Home</span>
+    </a>
+
+    <a href="tasks.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Tasks</span>
+    </a>
+
+    <a href="skills.html" class="nav-item">
+        <span class="nav-icon">✿</span>
+        <span>Skills</span>
+    </a>
+
+    <a href="projects.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Projects</span>
+    </a>
+
+    <a href="certificates.html" class="nav-item">
+        <span class="nav-icon">✧</span>
+        <span>Certificates</span>
+    </a>
+
+    <a href="universities.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Universities</span>
+    </a>
+
+    <a href="documents.html" class="nav-item">
+        <span class="nav-icon">▱</span>
+        <span>Documents</span>
+    </a>
+
+    <a href="notes.html" class="nav-item">
+        <span class="nav-icon">✎</span>
+        <span>Notes</span>
+    </a>
+
+    <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+    </a>
+
+</nav>
+
+    </aside>
+
+
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+
+        <!-- HEADER -->
+
+        <header class="top-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    welcome back ♡
+                </p>
+
+                <h2>
+                    Good morning!
+                </h2>
+
+                <p class="intro">
+                    Let's make a little progress today.
+                </p>
+
+            </div>
+
+            <div class="header-decoration">
+                ✧
+            </div>
+
+        </header>
+
+
+
+        <!-- ================= STAT CARDS ================= -->
+
+        <section class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-symbol">
+                    ♡
+                </div>
+
+                <div>
+
+                    <h3 id="homeTaskCount">
+                        0
+                    </h3>
+
+                    <p>
+                        Tasks today
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card pink">
+
+                <div class="stat-symbol">
+                    ✿
+                </div>
+
+                <div>
+
+                    <h3 id="homeSkillCount">
+                        0
+                    </h3>
+
+                    <p>
+                        Growing skills
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card blue">
+
+                <div class="stat-symbol">
+                    ✧
+                </div>
+
+                <div>
+
+                    <h3 id="homeProjectCount">
+                        0
+                    </h3>
+
+                    <p>
+                        Projects
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card yellow">
+
+                <div class="stat-symbol">
+                    ♕
+                </div>
+
+                <div>
+
+                    <h3 id="homeCertificateCount">
+                        0
+                    </h3>
+
+                    <p>
+                        Certificates
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= DASHBOARD GRID ================= -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- ================= TODAY'S TASKS ================= -->
+
+            <div class="card tasks-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <p class="card-small-title">
+                            for today
+                        </p>
+
+                        <h3>
+                            Today's Tasks
+                        </h3>
+
+                    </div>
+
+                    <a href="tasks.html" class="add-button">
+                        + Add
+                    </a>
+
+                </div>
+
+
+                <div
+                    id="homeTasks"
+                    class="task-list"
+                >
+
+                    <div class="home-empty-state">
+
+                        <span>🌱</span>
+
+                        <p>
+                            No tasks yet.
+                        </p>
+
+                        <small>
+                            Add something you want to accomplish.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="tasks.html"
+                    class="view-all"
+                >
+                    View all tasks →
+                </a>
+
+            </div>
+
+
+
+            <!-- ================= PROGRESS ================= -->
+
+            <div class="card progress-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <p class="card-small-title">
+                            your journey
+                        </p>
+
+                        <h3>
+                            My Progress
+                        </h3>
+
+                    </div>
+
+                    <span class="flower-decoration">
+                        ✿
+                    </span>
+
+                </div>
+
+
+                <div class="progress-wrapper">
+
+                    <div class="progress-circle">
+
+                        <div class="progress-inner">
+
+                            <strong id="homeProgress">
+                                0%
+                            </strong>
+
+                            <span>
+                                Blooming
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <p
+                    class="progress-message"
+                    id="homeProgressMessage"
+                >
+                    Your journey is just beginning. ♡
+                </p>
+
+            </div>
+
+
+
+            <!-- ================= SKILLS ================= -->
+
+            <div class="card skills-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <p class="card-small-title">
+                            keep learning
+                        </p>
+
+                        <h3>
+                            Growing Skills
+                        </h3>
+
+                    </div>
+
+                    <a
+                        href="skills.html"
+                        class="small-arrow"
+                    >
+                        →
+                    </a>
+
+                </div>
+
+
+                <div
+                    id="homeSkills"
+                    class="home-list"
+                >
+
+                    <div class="home-empty-state">
+
+                        <span>🌱</span>
+
+                        <p>
+                            No skills added yet.
+                        </p>
+
+                        <small>
+                            Start growing your skill garden.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= PROJECTS ================= -->
+
+            <div class="card projects-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <p class="card-small-title">
+                            things you've created
+                        </p>
+
+                        <h3>
+                            My Projects
+                        </h3>
+
+                    </div>
+
+                    <a
+                        href="projects.html"
+                        class="small-arrow"
+                    >
+                        →
+                    </a>
+
+                </div>
+
+
+                <div
+                    id="homeProjects"
+                    class="project-list"
+                >
+
+                    <div class="home-empty-state">
+
+                        <span>🌷</span>
+
+                        <p>
+                            No projects added yet.
+                        </p>
+
+                        <small>
+                            Your creations will appear here.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= MOTIVATION ================= -->
+
+        <section class="quote-card">
+
+            <div class="quote-flower">
+                🌸
+            </div>
+
+            <div>
+
+                <p class="quote">
+                    "Small steps still take you somewhere beautiful."
+                </p>
+
+                <span>
+                    — your little reminder to keep blooming
+                </span>
+
+            </div>
+
+            <div class="quote-stars">
+                ✧ ✦ ✧
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

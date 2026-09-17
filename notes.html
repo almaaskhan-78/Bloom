@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bloom — Notes</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600&family=Lato:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+<div class="app-shell">
+
+   
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <span class="brand-flower">🌸</span>
+
+            <span class="brand-name">
+                Bloom
+            </span>
+
+        </div>
+
+       <nav class="sidebar-nav">
+
+    <a href="index.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Home</span>
+    </a>
+
+    <a href="tasks.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Tasks</span>
+    </a>
+
+    <a href="skills.html" class="nav-item">
+        <span class="nav-icon">✿</span>
+        <span>Skills</span>
+    </a>
+
+    <a href="projects.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Projects</span>
+    </a>
+
+    <a href="certificates.html" class="nav-item">
+        <span class="nav-icon">✧</span>
+        <span>Certificates</span>
+    </a>
+
+    <a href="universities.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Universities</span>
+    </a>
+
+    <a href="documents.html" class="nav-item">
+        <span class="nav-icon">▱</span>
+        <span>Documents</span>
+    </a>
+
+    <a href="notes.html" class="nav-item">
+        <span class="nav-icon">✎</span>
+        <span>Notes</span>
+    </a>
+
+    <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+    </a>
+
+</nav>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <header class="page-header">
+
+            <div>
+
+                <p class="page-eyebrow">
+                    little thoughts ♡
+                </p>
+
+                <h1 class="page-title">
+                    My Notes
+                </h1>
+
+                <p class="page-subtitle">
+                    Little things I want to remember.
+                </p>
+
+            </div>
+
+
+            <button
+                class="primary-button"
+                id="addNoteButton"
+                type="button"
+            >
+                + Add Note
+            </button>
+
+        </header>
+
+
+        <!-- NOTES AREA -->
+
+        <section class="notes-board" id="notesBoard">
+
+            <!-- Notes will appear here -->
+
+        </section>
+
+
+        <!-- EMPTY STATE -->
+
+        <div
+            class="notes-empty-state"
+            id="notesEmpty"
+        >
+
+            <div class="empty-note-symbol">
+                ✎
+            </div>
+
+            <h2>
+                Nothing written yet
+            </h2>
+
+            <p>
+                Add a little note whenever something comes to mind.
+            </p>
+
+            <button
+                class="secondary-button"
+                id="emptyAddNote"
+                type="button"
+            >
+                + Write a note
+            </button>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<style>
+
+/* =========================================
+   NOTES PAGE
+========================================= */
+
+.notes-board {
+
+    width: 100%;
+
+    margin-top: 35px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(220px, 1fr)
+        );
+
+    gap: 25px;
+
+    align-items: start;
+}
+
+
+.sticky-note {
+
+    position: relative;
+
+    min-height: 190px;
+
+    padding: 25px 22px 20px;
+
+    box-sizing: border-box;
+
+    background: #fbeabe;
+
+    color: #5b4038;
+
+    border-radius: 3px;
+
+    box-shadow:
+        4px 7px 14px
+        rgba(91, 64, 56, 0.14);
+
+    transform: rotate(-1deg);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+/* Slightly different paper shades */
+
+.sticky-note:nth-child(2n) {
+
+    background: #f8ebcd;
+
+    transform: rotate(1.2deg);
+
+}
+
+.sticky-note:nth-child(3n) {
+
+    background: #f1d8d2;
+
+    transform: rotate(-0.6deg);
+
+}
+
+.sticky-note:nth-child(4n) {
+
+    background: #e5edf0;
+
+    transform: rotate(1.7deg);
+
+}
+
+
+/* Hover */
+
+.sticky-note:hover {
+
+    transform:
+        translateY(-5px)
+        rotate(0deg);
+
+    box-shadow:
+        6px 12px 20px
+        rgba(91, 64, 56, 0.18);
+
+}
+
+
+/* Note text */
+
+.note-text {
+
+    width: 100%;
+
+    min-height: 145px;
+
+    padding: 0;
+
+    margin: 0;
+
+    box-sizing: border-box;
+
+    border: none;
+
+    outline: none;
+
+    resize: none;
+
+    background: transparent;
+
+    color: #5b4038;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* Placeholder */
+
+.note-text::placeholder {
+
+    color:
+        rgba(
+            91,
+            64,
+            56,
+            0.45
+        );
+
+}
+
+
+/* Delete button */
+
+.delete-note {
+
+    position: absolute;
+
+    top: 9px;
+
+    right: 11px;
+
+    width: 28px;
+
+    height: 28px;
+
+    border: none;
+
+    background: transparent;
+
+    color:
+        rgba(208, 167, 155, 0.5);
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+
+    transition: 0.2s ease;
+
+}
+
+
+.delete-note:hover {
+
+    color: #cf7d82;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.35
+        );
+
+}
+
+
+/* Date */
+
+.note-date {
+
+    position: absolute;
+
+    bottom: 10px;
+
+    right: 15px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 12px;
+
+    color:
+        rgba(152, 115, 104, 0.45);
+
+}
+
+
+/* =========================================
+   NOTE TEXT
+========================================= */
+
+.note-text {
+
+    width: 100%;
+
+    min-height: 145px;
+
+    padding: 0;
+
+    margin: 0;
+
+    box-sizing: border-box;
+
+    border: none;
+
+    outline: none;
+
+    resize: none;
+
+    background: transparent;
+
+    color: #160e03;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* Placeholder */
+
+.note-text::placeholder {
+
+    color:
+        rgba(
+            255,
+            250,
+            243,
+            0.45
+        );
+
+}
+
+
+/* =========================================
+   NOTE DELETE BUTTON
+========================================= */
+
+.delete-note {
+
+    position: absolute;
+
+    top: 9px;
+
+    right: 11px;
+
+    width: 28px;
+
+    height: 28px;
+
+    border: none;
+
+    background: transparent;
+
+    color:
+        rgba(21, 13, 2, 0.55);
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+
+    transition: 0.2s ease;
+
+}
+
+
+.delete-note:hover {
+
+    color: #df9295;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+}
+
+
+/* =========================================
+   NOTE DATE
+========================================= */
+
+.note-date {
+
+    position: absolute;
+
+    bottom: 10px;
+
+    right: 15px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 12px;
+
+    color:
+        rgba(18, 11, 0, 0.4);
+
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.notes-empty-state {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    min-height: 330px;
+
+    margin-top: 35px;
+
+    padding: 40px;
+
+    background:
+        rgba(
+            255,
+            250,
+            243,
+            0.55
+        );
+
+    border:
+        1px dashed
+        rgba(246, 198, 184, 0.18);
+
+    border-radius: 22px;
+
+}
+
+
+.empty-note-symbol {
+
+    width: 70px;
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 17px;
+
+    border-radius: 50%;
+
+    background: #f7e5df;
+
+    color: #cf7d82;
+
+    font-size: 30px;
+
+}
+
+
+.notes-empty-state h2 {
+
+    margin: 0;
+
+    font-family:
+        "Allura",
+        cursive;
+
+    font-size: 43px;
+
+    font-weight: 400;
+
+    color: #5b4038;
+
+}
+
+
+.notes-empty-state p {
+
+    margin: 8px 0 20px;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 14px;
+
+    color: #8a7068;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 650px) {
+
+    .notes-board {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .sticky-note {
+
+        min-height: 180px;
+
+    }
+
+}
+
+</style>
+
+
+<script>
+
+/* =========================================
+   BLOOM NOTES
+========================================= */
+
+const notesBoard =
+    document.getElementById("notesBoard");
+
+const notesEmpty =
+    document.getElementById("notesEmpty");
+
+const addNoteButton =
+    document.getElementById("addNoteButton");
+
+const emptyAddNote =
+    document.getElementById("emptyAddNote");
+
+
+let notes =
+    JSON.parse(
+        localStorage.getItem("bloomNotes")
+    ) || [];
+
+
+/* =========================================
+   SAVE NOTES
+========================================= */
+
+function saveNotes() {
+
+    localStorage.setItem(
+        "bloomNotes",
+        JSON.stringify(notes)
+    );
+
+}
+
+
+/* =========================================
+   CREATE NEW NOTE
+========================================= */
+
+function createNote() {
+
+    const newNote = {
+
+        id: Date.now(),
+
+        text: ""
+
+    };
+
+
+    notes.unshift(newNote);
+
+    saveNotes();
+
+    displayNotes();
+
+}
+
+
+/* =========================================
+   DISPLAY NOTES
+========================================= */
+
+function displayNotes() {
+
+    notesBoard.innerHTML = "";
+
+
+    if (notes.length === 0) {
+
+        notesEmpty.style.display = "flex";
+
+        return;
+
+    }
+
+
+    notesEmpty.style.display = "none";
+
+
+    notes.forEach(function(note) {
+
+        const noteElement =
+            document.createElement("div");
+
+
+        noteElement.className =
+            "sticky-note";
+
+
+        noteElement.innerHTML =
+
+            '<button ' +
+                'class="delete-note" ' +
+                'data-id="' +
+                    note.id +
+                '" ' +
+                'type="button">' +
+                '×' +
+            '</button>' +
+
+            '<textarea ' +
+                'class="note-text" ' +
+                'data-id="' +
+                    note.id +
+                '" ' +
+                'placeholder="Write something...">' +
+                note.text +
+            '</textarea>' +
+
+            '<span class="note-date">' +
+                getNoteDate() +
+            '</span>';
+
+
+        notesBoard.appendChild(noteElement);
+
+    });
+
+
+    /* Automatically focus newest note */
+
+    const firstNote =
+        notesBoard.querySelector(
+            ".note-text"
+        );
+
+
+    if (
+        firstNote &&
+        notes[0].text === ""
+    ) {
+
+        firstNote.focus();
+
+    }
+
+}
+
+
+/* =========================================
+   DATE
+========================================= */
+
+function getNoteDate() {
+
+    const today =
+        new Date();
+
+
+    return today.toLocaleDateString(
+        "en-IN",
+        {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+/* =========================================
+   ADD NOTE BUTTONS
+========================================= */
+
+addNoteButton.addEventListener(
+    "click",
+    createNote
+);
+
+
+emptyAddNote.addEventListener(
+    "click",
+    createNote
+);
+
+
+/* =========================================
+   NOTE TEXT CHANGES
+========================================= */
+
+notesBoard.addEventListener(
+    "input",
+    function(event) {
+
+        if (
+            event.target.classList.contains(
+                "note-text"
+            )
+        ) {
+
+            const id =
+                Number(
+                    event.target.dataset.id
+                );
+
+
+            const note =
+                notes.find(
+                    function(item) {
+
+                        return item.id === id;
+
+                    }
+                );
+
+
+            if (!note) {
+                return;
+            }
+
+
+            note.text =
+                event.target.value;
+
+
+            saveNotes();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   DELETE NOTE
+========================================= */
+
+notesBoard.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target.classList.contains(
+                "delete-note"
+            )
+        ) {
+
+            const id =
+                Number(
+                    event.target.dataset.id
+                );
+
+
+            notes =
+                notes.filter(
+                    function(note) {
+
+                        return note.id !== id;
+
+                    }
+                );
+
+
+            saveNotes();
+
+            displayNotes();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   START
+========================================= */
+
+displayNotes();
+
+</script>
+
+</body>
+
+</html>

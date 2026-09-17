@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bloom — Documents</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600&family=Lato:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="app-shell">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <span class="brand-flower">🌸</span>
+
+            <span class="brand-name">
+                Bloom
+            </span>
+
+        </div>
+
+       <nav class="sidebar-nav">
+
+    <a href="index.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Home</span>
+    </a>
+
+    <a href="tasks.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Tasks</span>
+    </a>
+
+    <a href="skills.html" class="nav-item">
+        <span class="nav-icon">✿</span>
+        <span>Skills</span>
+    </a>
+
+    <a href="projects.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Projects</span>
+    </a>
+
+    <a href="certificates.html" class="nav-item">
+        <span class="nav-icon">✧</span>
+        <span>Certificates</span>
+    </a>
+
+    <a href="universities.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Universities</span>
+    </a>
+
+    <a href="documents.html" class="nav-item">
+        <span class="nav-icon">▱</span>
+        <span>Documents</span>
+    </a>
+
+    <a href="notes.html" class="nav-item">
+        <span class="nav-icon">✎</span>
+        <span>Notes</span>
+    </a>
+
+    <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+    </a>
+
+</nav>
+
+    </aside>
+
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+
+        <header class="page-header">
+
+            <div>
+
+                <p class="page-eyebrow">
+                    keep everything ready ♡
+                </p>
+
+                <h1 class="page-title">
+                    My Documents
+                </h1>
+
+                <p class="page-subtitle">
+                    Keep track of everything you'll need for applications, scholarships and beyond.
+                </p>
+
+            </div>
+
+
+            <button
+                class="primary-button"
+                id="openDocumentModal"
+                type="button"
+            >
+                + Add Document
+            </button>
+
+        </header>
+
+
+
+        <!-- FILTERS -->
+
+        <section class="document-filters">
+
+            <button
+                class="document-filter active"
+                data-filter="All"
+                type="button"
+            >
+                All
+            </button>
+
+            <button
+                class="document-filter"
+                data-filter="Needed"
+                type="button"
+            >
+                Needed
+            </button>
+
+            <button
+                class="document-filter"
+                data-filter="In Progress"
+                type="button"
+            >
+                In Progress
+            </button>
+
+            <button
+                class="document-filter"
+                data-filter="Ready"
+                type="button"
+            >
+                Ready
+            </button>
+
+            <button
+                class="document-filter"
+                data-filter="Submitted"
+                type="button"
+            >
+                Submitted
+            </button>
+
+        </section>
+
+
+
+        <!-- DOCUMENTS -->
+
+        <section class="documents-page-grid">
+
+            <div
+                class="documents-page-list"
+                id="documentsList"
+            ></div>
+
+
+            <div
+                class="documents-empty-state"
+                id="emptyDocuments"
+            >
+
+                <div class="empty-document-icon">
+                    📄
+                </div>
+
+                <h2>
+                    Nothing here yet
+                </h2>
+
+                <p>
+                    Your document checklist will grow here.
+                </p>
+
+                <button
+                    class="secondary-button"
+                    id="emptyAddDocument"
+                    type="button"
+                >
+                    + Add your first document
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- MODAL -->
+
+<div
+    class="modal-overlay"
+    id="documentModal"
+>
+
+    <div class="document-modal-card">
+
+
+        <button
+            class="modal-close"
+            id="closeDocumentModal"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <p class="modal-eyebrow">
+            add to your checklist ♡
+        </p>
+
+
+        <h2 class="modal-title">
+            New Document
+        </h2>
+
+
+        <form id="documentForm">
+
+
+            <div class="form-group">
+
+                <label for="documentName">
+                    Document name
+                </label>
+
+                <input
+                    type="text"
+                    id="documentName"
+                    placeholder="e.g. Statement of Purpose"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="documentCategory">
+                    Category
+                </label>
+
+                <select id="documentCategory">
+
+                    <option value="Application">
+                        Application
+                    </option>
+
+                    <option value="Academic">
+                        Academic
+                    </option>
+
+                    <option value="Scholarship">
+                        Scholarship
+                    </option>
+
+                    <option value="Identity">
+                        Identity
+                    </option>
+
+                    <option value="Travel / Visa">
+                        Travel / Visa
+                    </option>
+
+                    <option value="Financial / Accommodation">
+                        Financial / Accommodation
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="documentStatus">
+                    Status
+                </label>
+
+                <select id="documentStatus">
+
+                    <option value="Needed">
+                        Needed
+                    </option>
+
+                    <option value="In Progress">
+                        In Progress
+                    </option>
+
+                    <option value="Ready">
+                        Ready
+                    </option>
+
+                    <option value="Submitted">
+                        Submitted
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="documentDeadline">
+                    Deadline
+                    <span>(optional)</span>
+                </label>
+
+                <input
+                    type="date"
+                    id="documentDeadline"
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="documentNotes">
+                    Notes
+                    <span>(optional)</span>
+                </label>
+
+                <textarea
+                    id="documentNotes"
+                    rows="4"
+                    placeholder="Anything you want to remember..."
+                ></textarea>
+
+            </div>
+
+
+
+            <button
+                type="submit"
+                class="primary-button save-document-button"
+            >
+                Add Document
+            </button>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<style>
+
+/* ========================= */
+/* DOCUMENT PAGE */
+/* ========================= */
+
+.documents-page-grid {
+    width: 100%;
+    margin-top: 28px;
+}
+
+
+.documents-page-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+
+
+/* ========================= */
+/* FILTERS */
+/* ========================= */
+
+.document-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+}
+
+
+.document-filter {
+    border: 1px solid rgba(111, 77, 67, 0.16);
+    background: #fffaf3;
+    color: #80655d;
+
+    border-radius: 50px;
+
+    padding: 9px 17px;
+
+    font-family: "Lato", sans-serif;
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.document-filter:hover {
+    transform: translateY(-1px);
+}
+
+
+.document-filter.active {
+    background: #df9295;
+    border-color: #df9295;
+    color: white;
+}
+
+
+
+/* ========================= */
+/* DOCUMENT CARD */
+/* ========================= */
+
+.document-page-card {
+    position: relative;
+    overflow: hidden;
+
+    background: #fffaf3;
+
+    border: 1px solid rgba(111, 77, 67, 0.14);
+
+    border-radius: 18px;
+
+    padding: 26px;
+
+    box-shadow:
+        0 8px 25px rgba(91, 64, 56, 0.05);
+
+    transition: 0.25s ease;
+}
+
+
+.document-page-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 13px 30px rgba(91, 64, 56, 0.09);
+}
+
+
+.document-page-card::after {
+    content: "♡";
+
+    position: absolute;
+
+    right: 18px;
+    top: 12px;
+
+    font-size: 25px;
+
+    color: rgba(207, 125, 130, 0.15);
+}
+
+
+.document-card-top {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 15px;
+}
+
+
+.document-card-title {
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 27px;
+    font-weight: 600;
+
+    color: #5b4038;
+}
+
+
+.document-card-category {
+    display: inline-block;
+
+    margin-top: 8px;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 12px;
+
+    color: #cf7d82;
+}
+
+
+
+/* STATUS */
+
+.document-card-status {
+    flex-shrink: 0;
+
+    padding: 7px 11px;
+
+    border-radius: 50px;
+
+    background: #f5e6df;
+
+    color: #8b655d;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+}
+
+
+.document-card-status.progress {
+    background: #f8ecd8;
+    color: #9b7b4d;
+}
+
+
+.document-card-status.ready {
+    background: #e8f1ec;
+    color: #668374;
+}
+
+
+.document-card-status.submitted {
+    background: #e5edf2;
+    color: #6c8794;
+}
+
+
+
+/* DETAILS */
+
+.document-card-details {
+    margin-top: 22px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+
+.document-detail {
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 13px;
+
+    color: #80655d;
+}
+
+
+.document-detail strong {
+    color: #5b4038;
+}
+
+
+
+/* NOTES */
+
+.document-card-notes {
+    margin: 18px 0 0;
+
+    padding-top: 16px;
+
+    border-top:
+        1px solid rgba(111, 77, 67, 0.10);
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: #806b63;
+}
+
+
+
+/* ACTIONS */
+
+.document-card-actions {
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+    padding-top: 16px;
+
+    border-top:
+        1px solid rgba(111, 77, 67, 0.10);
+}
+
+
+.change-document-button,
+.delete-document-button {
+    border: none;
+
+    background: transparent;
+
+    padding: 5px 0;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+.change-document-button {
+    color: #cf7d82;
+}
+
+
+.delete-document-button {
+    color: #a98b83;
+}
+
+
+
+/* ========================= */
+/* EMPTY STATE */
+/* ========================= */
+
+.documents-empty-state {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    min-height: 330px;
+
+    padding: 40px;
+
+    background: rgba(255, 250, 243, 0.6);
+
+    border:
+        1px dashed rgba(111, 77, 67, 0.18);
+
+    border-radius: 22px;
+}
+
+
+.empty-document-icon {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 17px;
+
+    border-radius: 50%;
+
+    background: #f7e5df;
+
+    font-size: 30px;
+}
+
+
+.documents-empty-state h2 {
+    margin: 0;
+
+    font-family:
+        "Allura",
+        cursive;
+
+    font-size: 43px;
+
+    font-weight: 400;
+
+    color: #5b4038;
+}
+
+
+.documents-empty-state p {
+    margin: 8px 0 20px;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 14px;
+
+    color: #8a7068;
+}
+
+
+
+/* ========================= */
+/* MODAL */
+/* ========================= */
+
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(73, 50, 44, 0.28);
+
+    z-index: 9999;
+
+    padding: 20px;
+}
+
+
+.modal-overlay.show {
+    display: flex;
+}
+
+
+.document-modal-card {
+    position: relative;
+
+    width: min(520px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 34px;
+
+    background: #fffaf3;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 25px 70px rgba(72, 48, 42, 0.18);
+}
+
+
+.modal-close {
+    position: absolute;
+
+    top: 14px;
+    right: 18px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #a98b83;
+
+    font-size: 27px;
+
+    cursor: pointer;
+}
+
+
+.modal-eyebrow {
+    margin: 0 0 4px;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 12px;
+
+    color: #cf7d82;
+}
+
+
+.modal-title {
+    margin: 0 0 25px;
+
+    font-family:
+        "Allura",
+        cursive;
+
+    font-size: 44px;
+
+    font-weight: 400;
+
+    color: #5b4038;
+}
+
+
+
+/* FORM */
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-bottom: 17px;
+}
+
+
+.form-group label {
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #5b4038;
+}
+
+
+.form-group label span {
+    font-weight: 400;
+
+    color: #a58b83;
+}
+
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid rgba(111, 77, 67, 0.16);
+
+    border-radius: 11px;
+
+    padding: 11px 13px;
+
+    background: #fffdf9;
+
+    color: #5b4038;
+
+    font-family:
+        "Lato",
+        sans-serif;
+
+    font-size: 13px;
+
+    outline: none;
+}
+
+
+.form-group textarea {
+    resize: vertical;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #df9295;
+
+    box-shadow:
+        0 0 0 3px rgba(223, 146, 149, 0.10);
+}
+
+
+.save-document-button {
+    width: 100%;
+
+    margin-top: 5px;
+}
+
+
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+
+    .documents-page-list {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .document-card-top {
+        flex-direction: column;
+    }
+
+    .document-modal-card {
+        padding: 28px 22px;
+    }
+
+}
+
+</style>
+
+
+
+<script>
+
+/* ========================= */
+/* ELEMENTS */
+/* ========================= */
+
+const documentsList =
+    document.getElementById("documentsList");
+
+const documentForm =
+    document.getElementById("documentForm");
+
+const documentModal =
+    document.getElementById("documentModal");
+
+const openDocumentModal =
+    document.getElementById("openDocumentModal");
+
+const emptyAddDocument =
+    document.getElementById("emptyAddDocument");
+
+const closeDocumentModal =
+    document.getElementById("closeDocumentModal");
+
+
+
+/* ========================= */
+/* DATA */
+/* ========================= */
+
+let documents =
+    JSON.parse(
+        localStorage.getItem("bloomDocuments")
+    ) || [];
+
+
+let currentDocumentFilter = "All";
+
+
+
+/* ========================= */
+/* MODAL */
+/* ========================= */
+
+function openDocumentsModal() {
+
+    documentModal.classList.add("show");
+
+}
+
+
+function closeDocumentsModal() {
+
+    documentModal.classList.remove("show");
+
+}
+
+
+openDocumentModal.addEventListener(
+    "click",
+    openDocumentsModal
+);
+
+
+emptyAddDocument.addEventListener(
+    "click",
+    openDocumentsModal
+);
+
+
+closeDocumentModal.addEventListener(
+    "click",
+    closeDocumentsModal
+);
+
+
+documentModal.addEventListener(
+    "click",
+    function (event) {
+
+        if (event.target === documentModal) {
+
+            closeDocumentsModal();
+
+        }
+
+    }
+);
+
+
+
+/* ========================= */
+/* ADD DOCUMENT */
+/* ========================= */
+
+documentForm.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document
+                .getElementById("documentName")
+                .value
+                .trim();
+
+
+        const category =
+            document
+                .getElementById("documentCategory")
+                .value;
+
+
+        const status =
+            document
+                .getElementById("documentStatus")
+                .value;
+
+
+        const deadline =
+            document
+                .getElementById("documentDeadline")
+                .value;
+
+
+        const notes =
+            document
+                .getElementById("documentNotes")
+                .value
+                .trim();
+
+
+        const newDocument = {
+
+            id: Date.now(),
+
+            name: name,
+
+            category: category,
+
+            status: status,
+
+            deadline: deadline,
+
+            notes: notes
+
+        };
+
+
+        documents.push(newDocument);
+
+
+        localStorage.setItem(
+            "bloomDocuments",
+            JSON.stringify(documents)
+        );
+
+
+        documentForm.reset();
+
+        closeDocumentsModal();
+
+        displayDocuments();
+
+    }
+);
+
+
+
+/* ========================= */
+/* DISPLAY */
+/* ========================= */
+
+function displayDocuments() {
+
+    documentsList.innerHTML = "";
+
+
+    const emptyDocuments =
+        document.getElementById(
+            "emptyDocuments"
+        );
+
+
+    let filteredDocuments =
+        documents;
+
+
+    if (currentDocumentFilter !== "All") {
+
+        filteredDocuments =
+            documents.filter(
+                function (doc) {
+
+                    return (
+                        doc.status ===
+                        currentDocumentFilter
+                    );
+
+                }
+            );
+
+    }
+
+
+    if (filteredDocuments.length === 0) {
+
+        emptyDocuments.style.display =
+            "flex";
+
+        return;
+
+    }
+
+
+    emptyDocuments.style.display =
+        "none";
+
+
+    filteredDocuments.forEach(
+        function (doc) {
+
+            const card =
+                document.createElement("div");
+
+
+            card.className =
+                "document-page-card";
+
+
+            let statusClass = "";
+
+
+            if (doc.status === "Ready") {
+
+                statusClass = "ready";
+
+            }
+
+
+            if (doc.status === "Submitted") {
+
+                statusClass = "submitted";
+
+            }
+
+
+            if (doc.status === "In Progress") {
+
+                statusClass = "progress";
+
+            }
+
+
+            let deadlineHTML = "";
+
+
+            if (doc.deadline) {
+
+                deadlineHTML =
+                    '<div class="document-detail">' +
+                        '<strong>Deadline:</strong> ' +
+                        formatDate(doc.deadline) +
+                    '</div>';
+
+            }
+
+
+            let notesHTML = "";
+
+
+            if (doc.notes) {
+
+                notesHTML =
+                    '<p class="document-card-notes">' +
+                        doc.notes +
+                    '</p>';
+
+            }
+
+
+            card.innerHTML =
+
+                '<div class="document-card-top">' +
+
+                    '<div>' +
+
+                        '<h3 class="document-card-title">' +
+                            doc.name +
+                        '</h3>' +
+
+                        '<span class="document-card-category">' +
+                            doc.category +
+                        '</span>' +
+
+                    '</div>' +
+
+                    '<span class="document-card-status ' +
+                        statusClass +
+                    '">' +
+                        doc.status +
+                    '</span>' +
+
+                '</div>' +
+
+
+                '<div class="document-card-details">' +
+
+                    '<div class="document-detail">' +
+                        '<strong>Category:</strong> ' +
+                        doc.category +
+                    '</div>' +
+
+                    deadlineHTML +
+
+                '</div>' +
+
+
+                notesHTML +
+
+
+                '<div class="document-card-actions">' +
+
+                    '<button ' +
+                        'class="change-document-button" ' +
+                        'data-id="' +
+                            doc.id +
+                        '" ' +
+                        'type="button">' +
+                        'Change status' +
+                    '</button>' +
+
+                    '<button ' +
+                        'class="delete-document-button" ' +
+                        'data-id="' +
+                            doc.id +
+                        '" ' +
+                        'type="button">' +
+                        'Remove' +
+                    '</button>' +
+
+                '</div>';
+
+
+            documentsList.appendChild(card);
+
+        }
+    );
+
+}
+
+
+
+/* ========================= */
+/* DATE */
+/* ========================= */
+
+function formatDate(dateString) {
+
+    const date =
+        new Date(
+            dateString + "T00:00:00"
+        );
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+
+/* ========================= */
+/* CARD BUTTONS */
+/* ========================= */
+
+documentsList.addEventListener(
+    "click",
+    function (event) {
+
+
+        /* CHANGE STATUS */
+
+        if (
+            event.target.classList.contains(
+                "change-document-button"
+            )
+        ) {
+
+            const id =
+                Number(
+                    event.target.dataset.id
+                );
+
+
+            const documentItem =
+                documents.find(
+                    function (item) {
+
+                        return item.id === id;
+
+                    }
+                );
+
+
+            if (!documentItem) {
+
+                return;
+
+            }
+
+
+            const statuses = [
+
+                "Needed",
+
+                "In Progress",
+
+                "Ready",
+
+                "Submitted"
+
+            ];
+
+
+            const currentIndex =
+                statuses.indexOf(
+                    documentItem.status
+                );
+
+
+            const nextIndex =
+                (currentIndex + 1) %
+                statuses.length;
+
+
+            documentItem.status =
+                statuses[nextIndex];
+
+
+            localStorage.setItem(
+                "bloomDocuments",
+                JSON.stringify(documents)
+            );
+
+
+            displayDocuments();
+
+        }
+
+
+
+        /* REMOVE */
+
+        if (
+            event.target.classList.contains(
+                "delete-document-button"
+            )
+        ) {
+
+            const id =
+                Number(
+                    event.target.dataset.id
+                );
+
+
+            documents =
+                documents.filter(
+                    function (item) {
+
+                        return item.id !== id;
+
+                    }
+                );
+
+
+            localStorage.setItem(
+                "bloomDocuments",
+                JSON.stringify(documents)
+            );
+
+
+            displayDocuments();
+
+        }
+
+    }
+);
+
+
+
+/* ========================= */
+/* FILTERS */
+/* ========================= */
+
+const documentFilters =
+    document.querySelectorAll(
+        ".document-filter"
+    );
+
+
+documentFilters.forEach(
+    function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+
+                documentFilters.forEach(
+                    function (item) {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                currentDocumentFilter =
+                    button.dataset.filter;
+
+
+                displayDocuments();
+
+            }
+        );
+
+    }
+);
+
+
+
+/* ========================= */
+/* START */
+/* ========================= */
+
+displayDocuments();
+
+</script>
+
+
+</body>
+
+</html>

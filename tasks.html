@@ -1,0 +1,331 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tasks — Bloom</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bloom-app">
+
+   
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <span class="brand-flower">🌸</span>
+
+            <span class="brand-name">
+                Bloom
+            </span>
+
+        </div>
+
+       <nav class="sidebar-nav">
+
+    <a href="index.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Home</span>
+    </a>
+
+    <a href="tasks.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Tasks</span>
+    </a>
+
+    <a href="skills.html" class="nav-item">
+        <span class="nav-icon">✿</span>
+        <span>Skills</span>
+    </a>
+
+    <a href="projects.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Projects</span>
+    </a>
+
+    <a href="certificates.html" class="nav-item">
+        <span class="nav-icon">✧</span>
+        <span>Certificates</span>
+    </a>
+
+    <a href="universities.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Universities</span>
+    </a>
+
+    <a href="documents.html" class="nav-item">
+        <span class="nav-icon">▱</span>
+        <span>Documents</span>
+    </a>
+
+    <a href="notes.html" class="nav-item">
+        <span class="nav-icon">✎</span>
+        <span>Notes</span>
+    </a>
+
+    <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+    </a>
+
+</nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="page-content">
+
+        <header class="page-header">
+
+            <div>
+                <p class="page-eyebrow">a little step at a time</p>
+
+                <h1>My Tasks</h1>
+
+                <p class="page-subtitle">
+                    Things I want to get done today ♡
+                </p>
+            </div>
+
+            <button class="add-task-button" id="openTaskModal">
+                + Add Task
+            </button>
+
+        </header>
+
+
+        <!-- PROGRESS -->
+        <section class="task-progress-card">
+
+    <div class="task-progress-top">
+
+        <div>
+            <p class="progress-label">Today's progress</p>
+
+            <h2 id="progressText">
+                0 of 0 completed
+            </h2>
+        </div>
+
+        <span id="progressPercentage">
+            0%
+        </span>
+
+    </div>
+
+
+    <div class="progress-track">
+
+        <div
+            class="progress-fill"
+            id="progressFill">
+        </div>
+
+    </div>
+
+
+    <p
+        class="progress-message"
+        id="progressMessage">
+
+        One little task at a time 🌷
+
+    </p>
+
+</section>
+
+            </div>
+
+            <div class="progress-track">
+                <div
+                    class="progress-fill"
+                    id="taskProgress"
+                    style="width: 0%;">
+                </div>
+            </div>
+
+            <p class="progress-message" id="progressMessage">
+                Let's make a little progress today ♡
+            </p>
+
+        </section>
+
+
+        <!-- FILTERS -->
+        <div class="task-toolbar">
+
+            <button class="task-filter active" data-filter="all">
+                All
+            </button>
+
+            <button class="task-filter" data-filter="pending">
+                To do
+            </button>
+
+            <button class="task-filter" data-filter="completed">
+                Completed
+            </button>
+
+        </div>
+
+
+        <!-- TASK LIST -->
+        <section class="tasks-section">
+
+            <div id="taskList" class="task-list">
+
+                <!-- Tasks will appear here -->
+
+            </div>
+
+            <div id="emptyTasks" class="empty-tasks">
+
+                <div class="empty-flower">
+                    🌷
+                </div>
+
+                <h2>Nothing here yet ♡</h2>
+
+                <p>
+                    Add a little task and let's get blooming.
+                </p>
+
+                <button id="emptyAddTask">
+                    + Add your first task
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ADD TASK MODAL -->
+    <div class="task-modal" id="taskModal">
+
+        <div class="task-modal-box">
+
+            <button class="close-modal" id="closeTaskModal">
+                ×
+            </button>
+
+            <p class="modal-eyebrow">
+                a tiny thing to accomplish
+            </p>
+
+            <h2>Add a Task</h2>
+
+            <form id="taskForm">
+
+                <label>
+                    What do you need to do?
+                </label>
+
+                <input
+                    type="text"
+                    id="taskName"
+                    placeholder="e.g. Finish SQL practice"
+                    required
+                >
+
+
+                <div class="form-row">
+
+                    <div>
+                        <label>
+                            Category
+                        </label>
+
+                        <select id="taskCategory">
+
+                            <option value="Study">
+                                Study
+                            </option>
+
+                            <option value="Project">
+                                Project
+                            </option>
+
+                            <option value="Career">
+                                Career
+                            </option>
+
+                            <option value="Personal">
+                                Personal
+                            </option>
+
+                        </select>
+                    </div>
+
+
+                    <div>
+                        <label>
+                            Priority
+                        </label>
+
+                        <select id="taskPriority">
+
+                            <option value="Low">
+                                Low
+                            </option>
+
+                            <option value="Medium" selected>
+                                Medium
+                            </option>
+
+                            <option value="High">
+                                High
+                            </option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <label>
+                    Due date
+                </label>
+
+                <input
+                    type="date"
+                    id="taskDate"
+                >
+
+
+                <button
+                    type="submit"
+                    class="save-task-button">
+                    Add to Bloom ♡
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+```

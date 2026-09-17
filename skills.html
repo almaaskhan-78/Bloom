@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skills — Bloom</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="bloom-app">
+
+<div class="app">
+
+
+ 
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <span class="brand-flower">🌸</span>
+
+            <span class="brand-name">
+                Bloom
+            </span>
+
+        </div>
+
+       <nav class="sidebar-nav">
+
+    <a href="index.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Home</span>
+    </a>
+
+    <a href="tasks.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Tasks</span>
+    </a>
+
+    <a href="skills.html" class="nav-item">
+        <span class="nav-icon">✿</span>
+        <span>Skills</span>
+    </a>
+
+    <a href="projects.html" class="nav-item">
+        <span class="nav-icon">♡</span>
+        <span>Projects</span>
+    </a>
+
+    <a href="certificates.html" class="nav-item">
+        <span class="nav-icon">✧</span>
+        <span>Certificates</span>
+    </a>
+
+    <a href="universities.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Universities</span>
+    </a>
+
+    <a href="documents.html" class="nav-item">
+        <span class="nav-icon">▱</span>
+        <span>Documents</span>
+    </a>
+
+    <a href="notes.html" class="nav-item">
+        <span class="nav-icon">✎</span>
+        <span>Notes</span>
+    </a>
+
+    <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+    </a>
+
+</nav>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+
+        <!-- HEADER -->
+
+        <header class="page-header">
+
+            <div>
+
+                <p class="page-eyebrow">
+                    keep growing ♡
+                </p>
+
+                <h1>
+                    My Skills
+                </h1>
+
+                <p class="page-subtitle">
+                    Little things I'm learning, one step at a time.
+                </p>
+
+            </div>
+
+
+            <button
+                class="add-task-button"
+                id="openSkillModal"
+            >
+                + Add Skill
+            </button>
+
+        </header>
+
+
+
+        <!-- ================= SKILLS LIST ================= -->
+
+        <section class="skills-page-grid">
+
+            <div
+                id="skillsList"
+                class="skills-page-list"
+            >
+
+                <!-- Skills will appear here -->
+
+            </div>
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                id="emptySkills"
+                class="skills-empty-state"
+            >
+
+                <div class="empty-flower">
+                    🌷
+                </div>
+
+                <h2>
+                    Your skill garden is empty
+                </h2>
+
+                <p>
+                    Start with one little skill<br>
+                    and watch it grow.
+                </p>
+
+                <button
+                    class="primary-button"
+                    id="emptyAddSkill"
+                >
+                    + Add your first skill
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+    </main>
+
+</div>
+
+
+
+<!-- ================= ADD SKILL MODAL ================= -->
+
+<div
+    class="task-modal"
+    id="skillModal"
+>
+
+    <div class="task-modal-box skill-modal-box">
+
+        <button
+            class="close-modal"
+            id="closeSkillModal"
+        >
+            ×
+        </button>
+
+
+        <p class="page-eyebrow">
+            a new little beginning
+        </p>
+
+        <h2>
+            Add a Skill
+        </h2>
+
+
+        <form id="skillForm">
+
+
+            <!-- SKILL NAME -->
+
+            <label for="skillName">
+                Skill name
+            </label>
+
+            <input
+                type="text"
+                id="skillName"
+                placeholder="e.g. SQL"
+                required
+            >
+
+
+
+            <!-- CATEGORY -->
+
+            <label for="skillCategory">
+                Category
+            </label>
+
+            <select
+                id="skillCategory"
+                required
+            >
+
+                <option value="">
+                    Choose a category
+                </option>
+
+                <option value="Technical">
+                    Technical
+                </option>
+
+                <option value="Marketing">
+                    Marketing
+                </option>
+
+                <option value="CRM">
+                    CRM
+                </option>
+
+                <option value="Design">
+                    Design
+                </option>
+
+                <option value="Business">
+                    Business
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+
+
+            <!-- PROGRESS -->
+
+            <label for="skillProgress">
+                Current progress
+            </label>
+
+            <div class="progress-input-row">
+
+                <input
+                    type="range"
+                    id="skillProgress"
+                    min="0"
+                    max="100"
+                    value="0"
+                >
+
+                <span id="skillProgressValue">
+                    0%
+                </span>
+
+            </div>
+
+
+
+            <!-- DESCRIPTION -->
+
+            <label for="skillDescription">
+                Short description
+                <span class="optional">
+                    optional
+                </span>
+            </label>
+
+            <textarea
+                id="skillDescription"
+                rows="3"
+                placeholder="What are you learning about this skill?"
+            ></textarea>
+
+
+
+            <button
+                type="submit"
+                class="save-task-button"
+            >
+                Save Skill ♡
+            </button>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
